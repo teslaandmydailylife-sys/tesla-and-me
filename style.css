@@ -57,23 +57,27 @@ nav { display: flex; justify-content: space-between; align-items: center; width:
     font-weight: 300; margin-left: 2rem; font-size: 0.85rem;
 }
 
-/* 3. ヒーローセクション */
+/* ============================================================
+   HERO SECTION (FV画像 最終安定版)
+   ============================================================ */
 .hero {
     height: 90vh;
-    display: flex; align-items: center; justify-content: center;
-    text-align: center; padding-top: 70px;
-    /* あなたがアップした画像を最優先、無い場合は黒背景 */
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('hero-bg.jpg'), #000;
-    background-size: cover; background-position: center;
-}
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 70px;
+    position: relative;
+    overflow: hidden;
 
-.hero h1 { font-size: clamp(2rem, 8vw, 4rem); font-weight: 900; margin-bottom: 1rem; }
-.hero a.btn {
-    display: inline-block; padding: 0.8rem 2.5rem; border-radius: 50px;
-    text-decoration: none !important; color: white !important;
-    border: 1px solid white; font-weight: 600; transition: 0.3s;
+    /* 下記の設定を1行ずつ分けることで、ブラウザへの認識を確実にします */
+    background-color: #000; /* 画像が出るまでの下地 */
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), 
+                      url('./hero-bg.jpg'); /* ./ をつけることで現在のフォルダを明示 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-.hero a.btn:hover { background: white; color: black !important; }
 
 /* 4. 実績数値 */
 .trust-builder {
