@@ -252,81 +252,71 @@ nav {
     .btn-red { margin-left: 0; width: 80%; }
 }
 
+/* ============================================================
+   ESSENTIAL LINKS - 整理・統合済み最新バージョン
+   (干渉防止・レイアウト修正・レスポンシブ対応)
+   ============================================================ */
 
-/* Useful Links Section Styles */
 .useful-links {
     padding-bottom: 5rem;
 }
 
-/* Link Grid - レイアウトの違和感を解消 */
 .link-panel-grid {
     display: grid;
-    /* ワイド画面では4枚、中画面では2枚、スマホでは1枚に自動調整 */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* デフォルト：PCでは4列に固定して隙間を無くす */
+    grid-template-columns: repeat(4, 1fr); 
     gap: 1.5rem;
+    isolation: isolate; /* 重なりの干渉を防ぐ */
 }
 
-/* リンクカード自体の高さを揃えて、動画カードと「表現」を統一 */
 .link-card {
+    position: relative;
     display: flex;
-    flex-direction: row; /* 横並び構成を維持 */
     justify-content: space-between;
     align-items: center;
-    padding: 1.8rem 1.5rem; /* 少しだけ上下に厚みを持たせて高級感を出す */
+    padding: 1.8rem 1.5rem;
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 18px; /* 動画カードの丸みに合わせる */
+    border-radius: 18px;
     text-decoration: none;
     transition: all 0.4s ease;
-    height: 100%; /* 全てのカードの高さを統一 */
+    overflow: hidden; /* 内部演出のはみ出し防止 */
+    z-index: 1;
+    height: 100%; /* 全ての高さを統一 */
 }
 
-/* 3つ並びの動画エリアと横幅の「リズム」を合わせるための最大幅設定 */
-@media (min-width: 1200px) {
-    .link-panel-grid {
-        grid-template-columns: repeat(4, 1fr); /* PCでは4列に固定してズレを無くす */
-    }
-}
-
-@media (max-width: 1199px) and (min-width: 651px) {
-    .link-panel-grid {
-        grid-template-columns: repeat(2, 1fr); /* タブレットサイズでは2×2で安定させる */
-    }
-}
-
-@media (max-width: 650px) {
-    .link-panel-grid {
-        grid-template-columns: 1fr; /* スマホでは1列 */
-    }
-}
-
-/* カードの背景にうっすらと赤い光を仕込む */
+/* カードごとの発光演出（独立判定） */
 .link-card::before {
     content: "";
     position: absolute;
-    top: 0; left: -100%;
+    top: 0; left: 0;
     width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(227, 25, 55, 0.05), transparent);
-    transition: 0.5s;
+    background: radial-gradient(circle at center, rgba(227, 25, 55, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    pointer-events: none;
 }
 
 .link-card:hover {
-    background: rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.08);
     border-color: var(--tesla-red);
-    box-shadow: 0 0 20px rgba(227, 25, 55, 0.2);
-    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(227, 25, 55, 0.3);
+    transform: translateY(-5px); /* 隣に干渉しにくい上下移動 */
 }
 
 .link-card:hover::before {
-    left: 100%;
+    opacity: 1;
 }
 
+/* 内部パーツの判定無効化（リンクのクリックミス防止） */
 .link-content {
     display: flex;
     align-items: center;
     gap: 1.2rem;
+    pointer-events: none;
 }
 
 .link-icon {
@@ -358,197 +348,17 @@ nav {
 .link-card:hover .link-arrow {
     color: var(--tesla-red);
     transform: translateX(5px);
-    text-shadow: 0 0 8px var(--tesla-red-glow);
 }
 
-/* カード全体をリンクにするための調整 */
-.video-card-link {
-    text-decoration: none; /* 下線を消す */
-    color: inherit;        /* 文字色を継承 */
-    display: block;
-}
-
-.video-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
-    overflow: hidden;
-    transition: 0.4s ease;
-    height: 100%; /* 高さを揃える */
-}
-
-.video-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    border-color: var(--tesla-red);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px var(--tesla-red-glow);
-}
-
-.thumbnail {
-    position: relative;
-    overflow: hidden;
-    aspect-ratio: 16 / 9;
-}
-
-.thumbnail img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* 画像を枠いっぱいに表示 */
-    display: block;
-}
-
-/* 再生アイコンを常に中央に配置 */
-.play-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.5);
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0; /* 通常は見えない */
-    transition: 0.3s;
-}
-
-.video-card:hover .play-overlay {
-    opacity: 1; /* ホバー時に表示 */
-}
-
-.play-overlay i {
-    color: white;
-    font-size: 1.5rem;
-}
-
-
-/* Trust Builder - 電子パネルデザイン */
-.trust-builder {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 6rem 2rem;
-    gap: 2rem;
-    text-align: center;
-    flex-wrap: wrap; /* スマホ対応：入り切らない場合は折り返す */
-}
-
-.trust-item {
-    flex: 1;
-    min-width: 200px;
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.02);
-    border-radius: 20px;
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(10px);
-    transition: 0.3s;
-}
-
-.trust-item:hover {
-    border-color: var(--tesla-red);
-    box-shadow: 0 0 20px rgba(227, 25, 55, 0.1);
-    transform: translateY(-5px);
-}
-
-.stat {
-    display: block;
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--tesla-red);
-    text-shadow: 0 0 15px var(--tesla-red-glow);
-    margin-bottom: 0.5rem;
-    letter-spacing: -1px;
-}
-
-.trust-item p {
-    font-size: 0.9rem;
-    color: var(--text-dim);
-    font-weight: 300;
-    letter-spacing: 1px;
-    margin: 0;
-}
-
-/* スマホ表示での調整 */
-@media (max-width: 768px) {
-    .trust-builder {
-        padding: 4rem 1rem;
-        flex-direction: column; /* スマホでは縦に並べて見やすくする */
-    }
-    .trust-item {
-        width: 100%;
-    }
-}
-
-/* Essential Links - 干渉防止・高精度設計 */
-.useful-links {
-    padding-bottom: 5rem;
-}
-
-.link-panel-grid {
-    display: grid;
-    /* 1列、2列、4列への切り替えをより厳格に制御 */
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 1.5rem;
-    isolation: isolate; /* 他のセクションとの干渉を防ぐ最新プロパティ */
-}
-
-.link-card {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.8rem 1.5rem;
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 18px;
-    text-decoration: none;
-    transition: all 0.4s ease;
-    overflow: hidden; /* ★重要：内部の演出が外にはみ出さないようにする */
-    z-index: 1;
-}
-
-/* 背景の発光演出を「移動」ではなく「透明度」で制御（ズレの原因を排除） */
-.link-card::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: radial-gradient(circle at center, rgba(227, 25, 55, 0.1) 0%, transparent 70%);
-    opacity: 0; /* 通常時は消しておく */
-    transition: opacity 0.4s ease;
-    z-index: -1; /* 文字の後ろへ */
-    pointer-events: none; /* ★重要：この演出自体がマウス反応を邪魔しないようにする */
-}
-
-.link-card:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: var(--tesla-red);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(227, 25, 55, 0.3);
-    transform: translateY(-5px); /* scaleではなくY軸移動にして隣への影響を最小化 */
-}
-
-.link-card:hover::before {
-    opacity: 1; /* ホバーしたカードだけ光らせる */
-}
-
-/* 各パーツの配置を固定 */
-.link-content {
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-    pointer-events: none; /* カード本体でリンクを判定 */
-}
-
-/* レスポンシブの強制上書き */
+/* レスポンシブ調整（画面幅に合わせた列数の変化） */
 @media (max-width: 1200px) {
-    .link-panel-grid { grid-template-columns: repeat(2, 1fr); }
+    .link-panel-grid {
+        grid-template-columns: repeat(2, 1fr); /* タブレット：2x2 */
+    }
 }
 
 @media (max-width: 650px) {
-    .link-panel-grid { grid-template-columns: 1fr; }
+    .link-panel-grid {
+        grid-template-columns: 1fr; /* スマホ：1列 */
+    }
 }
