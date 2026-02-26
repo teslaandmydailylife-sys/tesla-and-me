@@ -1,22 +1,19 @@
 /* ============================================================
-   VARIABLE & BASE
+   Tesla and Me - OFFICIAL FULL CSS (修正完了版)
    ============================================================ */
+
+/* 1. 基本設定 */
 :root {
     --tesla-red: #E31937;
     --tesla-red-glow: rgba(227, 25, 55, 0.6);
     --glass-bg: rgba(255, 255, 255, 0.05);
     --glass-border: rgba(255, 255, 255, 0.15);
-    --glass-shadow: rgba(0, 0, 0, 0.3);
     --bg-dark: #0a0a0a;
     --text-main: #ffffff;
     --text-dim: #b0b0b0;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: 'Inter', sans-serif;
@@ -33,186 +30,148 @@ body {
     padding: 0 2rem;
 }
 
-/* ============================================================
-   HEADER & LOGO
-   ============================================================ */
+/* 2. ヘッダー */
 header {
     height: 70px;
     display: flex;
     align-items: center;
     position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(10, 10, 10, 0.7);
+    top: 0; width: 100%;
+    background: rgba(10, 10, 10, 0.8);
     backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--glass-border);
     z-index: 1000;
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-}
+nav { display: flex; justify-content: space-between; align-items: center; width: 100%; }
 
 .logo-img {
-    height: 40px !important;
+    height: 35px !important;
     width: auto !important;
-    display: block;
     filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
 }
 
-.nav-links {
-    display: flex;
-    list-style: none;
-}
-
+.nav-links { display: flex; list-style: none; }
 .nav-links li a {
-    text-decoration: none;
-    color: var(--text-main);
-    font-weight: 300;
-    margin-left: 2rem;
-    transition: 0.3s;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
+    text-decoration: none; color: var(--text-main);
+    font-weight: 300; margin-left: 2rem; font-size: 0.85rem;
 }
 
-.nav-links li a:hover {
-    color: var(--tesla-red);
-    text-shadow: 0 0 8px var(--tesla-red-glow);
-}
-
-/* ============================================================
-   HERO SECTION (背景画像修正版)
-   ============================================================ */
+/* 3. ヒーローセクション */
 .hero {
     height: 90vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding-top: 70px;
-    
-    /* hero-bg.jpg が無い場合でも真っ黒にならないよう、予備の画像URLを入れています */
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), 
-                url('hero-bg.jpg'),
-                url('https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=2000'); 
-    
-    background-size: cover;
-    background-position: center;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; padding-top: 70px;
+    /* あなたがアップした画像を最優先、無い場合は黒背景 */
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('hero-bg.jpg'), #000;
+    background-size: cover; background-position: center;
 }
 
-.hero h1 {
-    font-size: clamp(2rem, 8vw, 4rem);
-    font-weight: 900;
-    margin-bottom: 1rem;
-    text-shadow: 0 5px 15px rgba(0,0,0,0.5);
-}
-
-.hero p {
-    font-weight: 200;
-    color: var(--text-dim);
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
-}
-
-/* ヒーローセクションのボタンを修正 */
+.hero h1 { font-size: clamp(2rem, 8vw, 4rem); font-weight: 900; margin-bottom: 1rem; }
 .hero a.btn {
-    padding: 0.8rem 2.5rem;
-    border-radius: 50px;
-    text-decoration: none !important; /* 紫色と下線を消す */
-    color: white !important;
-    border: 1px solid white;
-    font-weight: 600;
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(5px);
-    transition: 0.3s;
+    display: inline-block; padding: 0.8rem 2.5rem; border-radius: 50px;
+    text-decoration: none !important; color: white !important;
+    border: 1px solid white; font-weight: 600; transition: 0.3s;
 }
+.hero a.btn:hover { background: white; color: black !important; }
 
-.hero a.btn:hover {
-    background: white;
-    color: black !important;
-}
-
-/* ============================================================
-   TRUST BUILDER (実績数値セクション修正)
-   ============================================================ */
+/* 4. 実績数値 */
 .trust-builder {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 6rem 2rem;
-    gap: 2rem;
-    text-align: center;
-    flex-wrap: wrap;
+    display: flex; justify-content: space-around; gap: 2rem;
+    padding: 6rem 2rem; flex-wrap: wrap;
 }
 
 .trust-item {
-    flex: 1;
-    min-width: 250px;
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.02);
-    border-radius: 20px;
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(10px);
+    flex: 1; min-width: 250px; padding: 2.5rem;
+    background: var(--glass-bg); border-radius: 20px;
+    border: 1px solid var(--glass-border); text-align: center;
 }
 
 .stat {
-    display: block;
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--tesla-red);
-    text-shadow: 0 0 15px var(--tesla-red-glow);
-    margin-bottom: 0.5rem;
+    display: block; font-size: 2.5rem; font-weight: 800;
+    color: var(--tesla-red); text-shadow: 0 0 15px var(--tesla-red-glow);
 }
 
-.trust-item p {
-    font-size: 0.9rem;
-    color: var(--text-dim);
-    font-weight: 300;
-}
-
-/* ============================================================
-   RECOMMENDED VIDEOS & ESSENTIAL LINKS
-   ============================================================ */
+/* 5. 動画セクション (巨大化を修正) */
 .section-title {
-    text-align: center;
-    font-size: 1.8rem;
-    font-weight: 200;
-    letter-spacing: 5px;
-    margin: 5rem 0 3rem;
-    text-transform: uppercase;
+    text-align: center; font-size: 1.6rem; letter-spacing: 5px;
+    margin: 4rem 0 3rem; text-transform: uppercase; font-weight: 200;
 }
 
-.video-grid, .link-panel-grid {
+.video-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* PCで3列に固定 */
     gap: 2rem;
 }
 
-.link-panel-grid {
-    grid-template-columns: repeat(4, 1fr); 
+.video-card-link { text-decoration: none !important; color: inherit !important; }
+
+.video-card {
+    background: var(--glass-bg); border: 1px solid var(--glass-border);
+    border-radius: 20px; overflow: hidden; transition: 0.4s;
+    height: 100%; display: flex; flex-direction: column;
 }
 
-.video-card-link, .link-card {
-    text-decoration: none !important;
-    color: inherit !important;
+.video-card:hover { border-color: var(--tesla-red); transform: translateY(-10px); }
+
+.thumbnail { width: 100%; aspect-ratio: 16/9; overflow: hidden; position: relative; }
+
+.thumbnail img {
+    width: 100%; height: 100%; object-fit: cover; /* 画像を枠に収める */
     display: block;
-    height: 100%;
 }
 
-.video-card, .link-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
-    overflo
+.video-info { padding: 1.5rem; flex-grow: 1; }
+.video-info h3 { font-size: 1.1rem; margin-bottom: 0.8rem; color: #fff; }
+.video-info p { color: var(--text-dim); font-size: 0.85rem; line-height: 1.5; }
+
+/* 6. リンクエリア (4列に修正) */
+.link-panel-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4列に固定 */
+    gap: 1.5rem;
+}
+
+.link-card {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.5rem; background: var(--glass-bg);
+    border: 1px solid var(--glass-border); border-radius: 15px;
+    text-decoration: none !important; color: inherit !important;
+    transition: 0.3s;
+}
+
+.link-card:hover { border-color: var(--tesla-red); background: rgba(255,255,255,0.08); }
+
+.link-content { display: flex; align-items: center; gap: 1rem; }
+.link-icon { font-size: 1.4rem; }
+.link-text span { display: block; font-weight: 600; font-size: 0.9rem; color: #fff; }
+.link-text p { font-size: 0.7rem; color: var(--text-dim); }
+
+/* 7. フッター・ニュースレター */
+.newsletter {
+    margin-top: 6rem; padding: 4rem 2rem; text-align: center;
+    border-top: 1px solid var(--glass-border);
+}
+
+.newsletter input {
+    background: var(--glass-bg); border: 1px solid var(--glass-border);
+    padding: 0.8rem 1.5rem; border-radius: 50px; color: white; width: 250px; outline: none;
+}
+
+.btn-red {
+    background: var(--tesla-red); color: white; border: none;
+    padding: 0.8rem 2rem; border-radius: 50px; cursor: pointer; margin-left: 10px;
+}
+
+/* 8. レスポンシブ (スマホ対応) */
+@media (max-width: 1024px) {
+    .video-grid { grid-template-columns: repeat(2, 1fr); }
+    .link-panel-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .trust-builder { flex-direction: column; }
+    .video-grid, .link-panel-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2.5rem; }
+}
