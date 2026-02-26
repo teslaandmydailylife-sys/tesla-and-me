@@ -338,3 +338,66 @@ nav {
     transform: translateX(5px);
     text-shadow: 0 0 8px var(--tesla-red-glow);
 }
+
+/* カード全体をリンクにするための調整 */
+.video-card-link {
+    text-decoration: none; /* 下線を消す */
+    color: inherit;        /* 文字色を継承 */
+    display: block;
+}
+
+.video-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.4s ease;
+    height: 100%; /* 高さを揃える */
+}
+
+.video-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: var(--tesla-red);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px var(--tesla-red-glow);
+}
+
+.thumbnail {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 画像を枠いっぱいに表示 */
+    display: block;
+}
+
+/* 再生アイコンを常に中央に配置 */
+.play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.5);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* 通常は見えない */
+    transition: 0.3s;
+}
+
+.video-card:hover .play-overlay {
+    opacity: 1; /* ホバー時に表示 */
+}
+
+.play-overlay i {
+    color: white;
+    font-size: 1.5rem;
+}
