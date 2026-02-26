@@ -1,3 +1,6 @@
+/* ============================================================
+   VARIABLE & BASE
+   ============================================================ */
 :root {
     --tesla-red: #E31937;
     --tesla-red-glow: rgba(227, 25, 55, 0.6);
@@ -21,7 +24,6 @@ body {
     color: var(--text-main);
     line-height: 1.6;
     overflow-x: hidden;
-    /* 背景に近未来的なグラデーションを追加 */
     background: radial-gradient(circle at top right, #1a1a1a, #000000);
 }
 
@@ -31,7 +33,9 @@ body {
     padding: 0 2rem;
 }
 
-/* Header - ガラスの透過とぼかし */
+/* ============================================================
+   HEADER & LOGO
+   ============================================================ */
 header {
     height: 70px;
     display: flex;
@@ -40,7 +44,7 @@ header {
     top: 0;
     width: 100%;
     background: rgba(10, 10, 10, 0.7);
-    backdrop-filter: blur(20px); /* ガラス効果の肝 */
+    backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--glass-border);
     z-index: 1000;
@@ -53,27 +57,24 @@ nav {
     width: 100%;
 }
 
-/* ロゴエリアの調整 */
 .logo {
     display: flex;
     align-items: center;
     text-decoration: none;
 }
 
-/* ロゴ画像のサイズ制御 */
 .logo-img {
-    height: 40px; /* ヘッダーの高さ(70px)に合わせて調整（30px〜45pxがおすすめ） */
-    width: auto;  /* 横幅は自動計算 */
+    height: 40px !important;
+    width: auto !important;
     display: block;
     transition: transform 0.3s ease;
-    /* ガラスデザインに合わせ、少しだけ電子的な輝きを与える（任意） */
     filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
 }
 
-/* マウスを乗せた時の動き */
 .logo:hover .logo-img {
     transform: scale(1.05);
 }
+
 .nav-links {
     display: flex;
     list-style: none;
@@ -94,7 +95,9 @@ nav {
     text-shadow: 0 0 8px var(--tesla-red-glow);
 }
 
-/* Hero Section */
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
 .hero {
     height: 90vh;
     display: flex;
@@ -102,7 +105,7 @@ nav {
     justify-content: center;
     text-align: center;
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), 
-                url('https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?auto=format&fit=crop&q=80&w=2000'); /* 電子的な回路や都市のイメージ */
+                url('https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?auto=format&fit=crop&q=80&w=2000');
     background-size: cover;
     background-position: center;
 }
@@ -145,7 +148,9 @@ nav {
     transform: scale(1.05);
 }
 
-/* Video Section - ガラスカードデザイン */
+/* ============================================================
+   RECOMMENDED VIDEOS (修正版)
+   ============================================================ */
 .section-title {
     text-align: center;
     font-size: 1.8rem;
@@ -161,6 +166,14 @@ nav {
     gap: 2rem;
 }
 
+/* リンクの青色と下線を強制解除 */
+.video-card-link {
+    text-decoration: none !important;
+    color: inherit !important;
+    display: block;
+    height: 100%;
+}
+
 .video-card {
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
@@ -169,29 +182,40 @@ nav {
     border-radius: 20px;
     overflow: hidden;
     transition: 0.4s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .video-card:hover {
-    transform: translateY(-10px) scale(1.02);
+    transform: translateY(-10px);
     border-color: var(--tesla-red);
     box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px var(--tesla-red-glow);
 }
 
+.thumbnail {
+    position: relative;
+    aspect-ratio: 16/9;
+}
+
 .thumbnail img {
     width: 100%;
-    aspect-ratio: 16/9;
+    height: 100%;
     object-fit: cover;
     border-bottom: 1px solid var(--glass-border);
 }
 
 .video-info {
     padding: 1.5rem;
+    flex-grow: 1; /* タイトルの長さに寄らず高さを揃える */
 }
 
 .video-info h3 {
     font-size: 1.1rem;
     font-weight: 600;
     margin-bottom: 0.8rem;
+    color: var(--text-main);
+    text-decoration: none !important;
 }
 
 .video-info p {
@@ -200,73 +224,27 @@ nav {
     font-weight: 300;
 }
 
-/* Newsletter - 電子的フッター */
-.newsletter {
-    margin-top: 8rem;
-    padding: 5rem 0;
-    background: linear-gradient(to bottom, transparent, rgba(227, 25, 55, 0.1));
-    border-top: 1px solid var(--glass-border);
-    text-align: center;
+.play-overlay {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.5);
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    opacity: 0; transition: 0.3s;
 }
 
-.newsletter input {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    padding: 1rem 1.5rem;
-    border-radius: 50px;
-    color: white;
-    width: 300px;
-    outline: none;
-    transition: 0.3s;
-}
-
-.newsletter input:focus {
-    border-color: var(--tesla-red);
-    box-shadow: 0 0 15px var(--tesla-red-glow);
-}
-
-.btn-red {
-    background: var(--tesla-red);
-    color: white;
-    box-shadow: 0 0 20px var(--tesla-red-glow);
-    margin-left: 10px;
-}
-
-/* Modal - ダークなガラス */
-.modal {
-    background: rgba(0,0,0,0.95);
-    backdrop-filter: blur(15px);
-}
-
-.modal-content {
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 0 50px rgba(0,0,0,1);
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    .nav-links { display: none; }
-    .newsletter input { width: 80%; margin-bottom: 1rem; }
-    .btn-red { margin-left: 0; width: 80%; }
-}
+.video-card:hover .play-overlay { opacity: 1; }
 
 /* ============================================================
-   ESSENTIAL LINKS - 整理・統合済み最新バージョン
-   (干渉防止・レイアウト修正・レスポンシブ対応)
+   ESSENTIAL LINKS (統合版)
    ============================================================ */
-
-.useful-links {
-    padding-bottom: 5rem;
-}
-
 .link-panel-grid {
     display: grid;
-    /* デフォルト：PCでは4列に固定して隙間を無くす */
     grid-template-columns: repeat(4, 1fr); 
     gap: 1.5rem;
-    isolation: isolate; /* 重なりの干渉を防ぐ */
+    isolation: isolate;
 }
 
 .link-card {
@@ -282,12 +260,11 @@ nav {
     border-radius: 18px;
     text-decoration: none;
     transition: all 0.4s ease;
-    overflow: hidden; /* 内部演出のはみ出し防止 */
+    overflow: hidden;
     z-index: 1;
-    height: 100%; /* 全ての高さを統一 */
+    height: 100%;
 }
 
-/* カードごとの発光演出（独立判定） */
 .link-card::before {
     content: "";
     position: absolute;
@@ -304,14 +281,11 @@ nav {
     background: rgba(255, 255, 255, 0.08);
     border-color: var(--tesla-red);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(227, 25, 55, 0.3);
-    transform: translateY(-5px); /* 隣に干渉しにくい上下移動 */
+    transform: translateY(-5px);
 }
 
-.link-card:hover::before {
-    opacity: 1;
-}
+.link-card:hover::before { opacity: 1; }
 
-/* 内部パーツの判定無効化（リンクのクリックミス防止） */
 .link-content {
     display: flex;
     align-items: center;
@@ -319,46 +293,62 @@ nav {
     pointer-events: none;
 }
 
-.link-icon {
-    font-size: 1.5rem;
-    filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
-}
+.link-icon { font-size: 1.5rem; }
 
 .link-text span {
     display: block;
     color: var(--text-main);
     font-weight: 600;
     font-size: 1rem;
-    letter-spacing: 0.5px;
 }
 
 .link-text p {
     color: var(--text-dim);
     font-size: 0.75rem;
-    font-weight: 300;
     margin-top: 2px;
 }
 
-.link-arrow {
-    color: var(--text-dim);
-    font-size: 1.2rem;
-    transition: 0.3s;
+/* ============================================================
+   NEWSLETTER & FOOTER
+   ============================================================ */
+.newsletter {
+    margin-top: 8rem;
+    padding: 5rem 0;
+    background: linear-gradient(to bottom, transparent, rgba(227, 25, 55, 0.1));
+    border-top: 1px solid var(--glass-border);
+    text-align: center;
 }
 
-.link-card:hover .link-arrow {
-    color: var(--tesla-red);
-    transform: translateX(5px);
+.newsletter input {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    color: white;
+    width: 300px;
+    outline: none;
 }
 
-/* レスポンシブ調整（画面幅に合わせた列数の変化） */
+.btn-red {
+    background: var(--tesla-red);
+    color: white;
+    box-shadow: 0 0 20px var(--tesla-red-glow);
+    margin-left: 10px;
+}
+
+/* ============================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================ */
 @media (max-width: 1200px) {
-    .link-panel-grid {
-        grid-template-columns: repeat(2, 1fr); /* タブレット：2x2 */
-    }
+    .link-panel-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .newsletter input { width: 80%; margin-bottom: 1rem; }
+    .btn-red { margin-left: 0; width: 80%; }
 }
 
 @media (max-width: 650px) {
-    .link-panel-grid {
-        grid-template-columns: 1fr; /* スマホ：1列 */
-    }
+    .link-panel-grid { grid-template-columns: 1fr; }
 }
