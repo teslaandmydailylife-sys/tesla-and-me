@@ -96,7 +96,7 @@ nav {
 }
 
 /* ============================================================
-   HERO SECTION
+   HERO SECTION (FV画像設定)
    ============================================================ */
 .hero {
     height: 90vh;
@@ -104,48 +104,15 @@ nav {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), 
-                url('https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?auto=format&fit=crop&q=80&w=2000');
-    background-size: cover;
-    background-position: center;
-}
-
-.hero h1 {
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
-    font-weight: 900;
-    letter-spacing: -2px;
-    margin-bottom: 1.5rem;
-    background: linear-gradient(to bottom, #fff 0%, #aaa 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.hero p {
-    font-weight: 200;
-    font-size: 1.2rem;
-    color: var(--text-dim);
-    margin-bottom: 2.5rem;
-}
-
-.btn {
-    padding: 0.8rem 2.5rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    display: inline-block;
-}
-
-.btn-primary {
-    background: transparent;
-    color: white;
-    border: 1px solid var(--text-main);
-}
-
-.btn-primary:hover {
-    background: white;
-    color: black;
-    transform: scale(1.05);
+    
+    /* 画像のパスをアップロードしたファイル名に変更 */
+    /* linear-gradient は文字を読みやすくするために画像を少し暗くするフィルターです */
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), 
+                url('hero-bg.jpg'); 
+                
+    background-size: cover;     /* 画面いっぱいに広げる */
+    background-position: center; /* 画像の中央を表示 */
+    background-attachment: fixed; /* スクロール時に画像が固定される演出（パララックス） */
 }
 
 /* ============================================================
