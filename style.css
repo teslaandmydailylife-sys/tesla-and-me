@@ -258,26 +258,48 @@ nav {
     padding-bottom: 5rem;
 }
 
+/* Link Grid - レイアウトの違和感を解消 */
 .link-panel-grid {
     display: grid;
+    /* ワイド画面では4枚、中画面では2枚、スマホでは1枚に自動調整 */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
 }
 
+/* リンクカード自体の高さを揃えて、動画カードと「表現」を統一 */
 .link-card {
     display: flex;
+    flex-direction: row; /* 横並び構成を維持 */
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.03); /* 極薄のガラス */
+    padding: 1.8rem 1.5rem; /* 少しだけ上下に厚みを持たせて高級感を出す */
+    background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
+    border-radius: 18px; /* 動画カードの丸みに合わせる */
     text-decoration: none;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    position: relative;
-    overflow: hidden;
+    transition: all 0.4s ease;
+    height: 100%; /* 全てのカードの高さを統一 */
+}
+
+/* 3つ並びの動画エリアと横幅の「リズム」を合わせるための最大幅設定 */
+@media (min-width: 1200px) {
+    .link-panel-grid {
+        grid-template-columns: repeat(4, 1fr); /* PCでは4列に固定してズレを無くす */
+    }
+}
+
+@media (max-width: 1199px) and (min-width: 651px) {
+    .link-panel-grid {
+        grid-template-columns: repeat(2, 1fr); /* タブレットサイズでは2×2で安定させる */
+    }
+}
+
+@media (max-width: 650px) {
+    .link-panel-grid {
+        grid-template-columns: 1fr; /* スマホでは1列 */
+    }
 }
 
 /* カードの背景にうっすらと赤い光を仕込む */
