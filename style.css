@@ -53,18 +53,27 @@ nav {
     width: 100%;
 }
 
+/* ロゴエリアの調整 */
 .logo {
-    font-weight: 900;
-    font-size: 1.4rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
 }
 
-.logo span {
-    color: var(--tesla-red);
-    text-shadow: 0 0 10px var(--tesla-red-glow);
+/* ロゴ画像のサイズ制御 */
+.logo-img {
+    height: 40px; /* ヘッダーの高さ(70px)に合わせて調整（30px〜45pxがおすすめ） */
+    width: auto;  /* 横幅は自動計算 */
+    display: block;
+    transition: transform 0.3s ease;
+    /* ガラスデザインに合わせ、少しだけ電子的な輝きを与える（任意） */
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
 }
 
+/* マウスを乗せた時の動き */
+.logo:hover .logo-img {
+    transform: scale(1.05);
+}
 .nav-links {
     display: flex;
     list-style: none;
