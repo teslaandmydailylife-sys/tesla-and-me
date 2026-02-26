@@ -4,10 +4,16 @@ const iframe = document.getElementById("youtubePlayer");
 const closeModal = document.querySelector(".close-modal");
 
 function openVideo(videoId) {
-    const videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-    iframe.src = videoUrl;
-    modal.style.display = "block";
-    document.body.style.overflow = "hidden"; // スクロール防止
+    // 埋め込み用URLにパラメータを追加
+    const videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+    const player = document.getElementById("youtubePlayer");
+    player.src = videoUrl;
+    
+    // iframeに属性を追加して自動再生を許可
+    player.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+    
+    document.getElementById("videoModal").style.display = "block";
+    document.body.style.overflow = "hidden";
 }
 
 closeModal.onclick = function() {
