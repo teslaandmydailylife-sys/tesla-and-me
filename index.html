@@ -62,101 +62,110 @@
             </div>
         </section>
 
-        <!-- Recommended Videos 抜粋部分 -->
+        <!-- Recommended Videos (YouTube遷移形式) -->
         <section id="videos" class="recommended-videos container">
             <h2 class="section-title">Recommended Videos</h2>
             <div class="video-grid">
-                <!-- Card 1: 充電ガイド -->
-                <div class="video-card">
-                    <div class="thumbnail" onclick="openVideo('L-R8N_l_I-c')">
-                        <img src="https://i.ytimg.com/vi/L-R8N_l_I-c/hqdefault.jpg" alt="Tesla Charging">
-                        <div class="play-overlay"><i class="fas fa-play"></i></div>
+                
+                <!-- カード 1 -->
+                <a href="https://www.youtube.com/watch?v=L-R8N_l_I-c" class="video-card-link" target="_blank">
+                    <div class="video-card">
+                        <div class="thumbnail">
+                            <!-- 任意の画像をアップロードしてファイル名を指定（例: thumb1.jpg） -->
+                            <img src="thumb1.jpg" alt="Tesla Charging Guide">
+                            <div class="play-overlay"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="video-info">
+                            <h3>テスラ充電の正解：100%充電はOK？</h3>
+                            <p>LFPバッテリーと三元系バッテリーの違いと、寿命を最大化する運用術を徹底解説。</p>
+                        </div>
                     </div>
-                    <div class="video-info">
-                        <h3>テスラ充電の正解：100%充電はOK？</h3>
-                        <p>LFPバッテリーと三元系バッテリーの違いと、寿命を最大化する運用術を解説。</p>
-                    </div>
-                </div>
+                </a>
         
-                <!-- Card 2: 納車チェック -->
-                <div class="video-card">
-                    <div class="thumbnail" onclick="openVideo('q_Hh9R8_RjI')">
-                        <img src="https://i.ytimg.com/vi/q_Hh9R8_RjI/hqdefault.jpg" alt="Tesla Delivery">
-                        <div class="play-overlay"><i class="fas fa-play"></i></div>
+                <!-- カード 2 -->
+                <a href="https://www.youtube.com/watch?v=q_Hh9R8_RjI" class="video-card-link" target="_blank">
+                    <div class="video-card">
+                        <div class="thumbnail">
+                            <img src="thumb2.jpg" alt="Tesla Delivery Checklist">
+                            <div class="play-overlay"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="video-info">
+                            <h3>2025年版：テスラ納車後チェックリスト</h3>
+                            <p>注文から納車、そして公道デビューまで。失敗しないための確認ポイントを凝縮。</p>
+                        </div>
                     </div>
-                    <div class="video-info">
-                        <h3>2025年版：テスラ納車後チェックリスト</h3>
-                        <p>注文から公道デビューまで。失敗しないための確認ポイントを凝縮。</p>
-                    </div>
-                </div>
+                </a>
         
-                <!-- Card 3: 隠れ機能 -->
-                <div class="video-card">
-                    <div class="thumbnail" onclick="openVideo('V5X7vD5mX-g')">
-                        <img src="https://i.ytimg.com/vi/V5X7vD5mX-g/hqdefault.jpg" alt="Tesla Hidden Features">
-                        <div class="play-overlay"><i class="fas fa-play"></i></div>
+                <!-- カード 3 -->
+                <a href="https://www.youtube.com/watch?v=V5X7vD5mX-g" class="video-card-link" target="_blank">
+                    <div class="video-card">
+                        <div class="thumbnail">
+                            <img src="thumb3.jpg" alt="Tesla Hidden Features">
+                            <div class="play-overlay"><i class="fas fa-play"></i></div>
+                        </div>
+                        <div class="video-info">
+                            <h3>テスラの隠れ機能：ボタン長押しの裏技</h3>
+                            <p>意外と知らないステアリングボタンのカスタマイズ。運転がもっと快適になる設定方法。</p>
+                        </div>
                     </div>
-                    <div class="video-info">
-                        <h3>テスラの隠れ機能：長押しの裏技</h3>
-                        <p>意外と知らないステアリングボタンのカスタマイズで運転を快適に。</p>
-                    </div>
-                </div>
+                </a>
+        
             </div>
         </section>
 
         <!-- Useful Links Section (先進的なURLエリア) -->
-<section id="links" class="useful-links container">
-    <h2 class="section-title">Essential Links</h2>
-    <div class="link-panel-grid">
-        <!-- リンクカード 1: 紹介リンクなど -->
-        <a href="https://www.tesla.com/referral/yourname123" class="link-card" target="_blank">
-            <div class="link-content">
-                <div class="link-icon">⚡</div>
-                <div class="link-text">
-                    <span>Tesla Referral</span>
-                    <p>テスラ紹介プログラム（特典付きリンク）</p>
-                </div>
+        <section id="links" class="useful-links container">
+            <h2 class="section-title">Essential Links</h2>
+            <div class="link-panel-grid">
+                <!-- リンクカード 1: 紹介リンクなど -->
+                <a href="https://www.tesla.com/referral/yourname123" class="link-card" target="_blank">
+                    <div class="link-content">
+                        <div class="link-icon">⚡</div>
+                        <div class="link-text">
+                            <span>Tesla Referral</span>
+                            <p>テスラ紹介プログラム（特典付きリンク）</p>
+                        </div>
+                    </div>
+                    <div class="link-arrow">→</div>
+                </a>
+        
+                <!-- リンクカード 2: おすすめアイテム -->
+                <a href="https://amzn.to/example" class="link-card" target="_blank">
+                    <div class="link-content">
+                        <div class="link-icon">🛠️</div>
+                        <div class="link-text">
+                            <span>Selected Accessories</span>
+                            <p>実際に使用している厳選ガジェット集</p>
+                        </div>
+                    </div>
+                    <div class="link-arrow">→</div>
+                </a>
+        
+                <!-- リンクカード 3: X (Twitter) -->
+                <a href="https://twitter.com/your-account" class="link-card" target="_blank">
+                    <div class="link-content">
+                        <div class="link-icon">📱</div>
+                        <div class="link-text">
+                            <span>Latest Updates (X)</span>
+                            <p>日々のテスラライフをリアルタイム発信</p>
+                        </div>
+                    </div>
+                    <div class="link-arrow">→</div>
+                </a>
+        
+                <!-- リンクカード 4: お問い合わせなど -->
+                <a href="mailto:example@gmail.com" class="link-card">
+                    <div class="link-content">
+                        <div class="link-icon">✉️</div>
+                        <div class="link-text">
+                            <span>Business Inquiry</span>
+                            <p>お仕事のご依頼・お問い合わせはこちら</p>
+                        </div>
+                    </div>
+                    <div class="link-arrow">→</div>
+                </a>
             </div>
-            <div class="link-arrow">→</div>
-        </a>
-
-        <!-- リンクカード 2: おすすめアイテム -->
-        <a href="https://amzn.to/example" class="link-card" target="_blank">
-            <div class="link-content">
-                <div class="link-icon">🛠️</div>
-                <div class="link-text">
-                    <span>Selected Accessories</span>
-                    <p>実際に使用している厳選ガジェット集</p>
-                </div>
-            </div>
-            <div class="link-arrow">→</div>
-        </a>
-
-        <!-- リンクカード 3: X (Twitter) -->
-        <a href="https://twitter.com/your-account" class="link-card" target="_blank">
-            <div class="link-content">
-                <div class="link-icon">📱</div>
-                <div class="link-text">
-                    <span>Latest Updates (X)</span>
-                    <p>日々のテスラライフをリアルタイム発信</p>
-                </div>
-            </div>
-            <div class="link-arrow">→</div>
-        </a>
-
-        <!-- リンクカード 4: お問い合わせなど -->
-        <a href="mailto:example@gmail.com" class="link-card">
-            <div class="link-content">
-                <div class="link-icon">✉️</div>
-                <div class="link-text">
-                    <span>Business Inquiry</span>
-                    <p>お仕事のご依頼・お問い合わせはこちら</p>
-                </div>
-            </div>
-            <div class="link-arrow">→</div>
-        </a>
-    </div>
-</section>
+        </section>
         
         <!-- Coming Soon -->
         <section id="community" class="coming-soon container">
