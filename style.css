@@ -58,7 +58,7 @@ nav { display: flex; justify-content: space-between; align-items: center; width:
 }
 
 /* ============================================================
-   HERO SECTION (FV画像 最終安定版)
+   HERO SECTION (PC表示 最終強制解決版)
    ============================================================ */
 .hero {
     height: 90vh;
@@ -70,13 +70,19 @@ nav { display: flex; justify-content: space-between; align-items: center; width:
     position: relative;
     overflow: hidden;
 
-    /* 下記の設定を1行ずつ分けることで、ブラウザへの認識を確実にします */
-    background-color: #000; /* 画像が出るまでの下地 */
+    /* 背景色を真っ黒ではなく、少しグレーにして読み込みを視覚的に確認 */
+    background-color: #1a1a1a; 
+
+    /* urlの末尾に ?update=1 をつけて、PCに「新しい画像だ」と強制認識させます */
     background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), 
-                      url('./hero-bg.jpg'); /* ./ をつけることで現在のフォルダを明示 */
+                      url('./hero-bg.jpg?update=1'); 
+
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    
+    /* PCで不具合を起こしやすい 'fixed' をやめて 'scroll' に固定します */
+    background-attachment: scroll !important; 
 }
 
 /* 4. 実績数値 */
